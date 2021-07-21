@@ -38,12 +38,12 @@ aproposRouter.post('/', (req, res) => {
   } else {
     connection
       .promise()
-      .query('INSERT INTO Apropos (pictureUrl, title, description ) VALUES (?, ?, ?)', [title, pictureUrl, description])
+      .query('INSERT INTO Apropos (pictureUrl, title, description ) VALUES (?, ?, ?)', [pictureUrl, title, description])
       .then(([results]) => {
         const apropos = {
           id: results.insertId,
-          title,
           pictureUrl,
+          title,
           description,
         };
         res.json(apropos);

@@ -3,14 +3,16 @@ const cors = require('cors');
 const connection = require('./db-config');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const homeRouter = require('./routes/home');
+const aproposRouter = require('./routes/apropos');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use('/', homeRouter);
+app.use('/', aproposRouter);
 
 connection.getConnection((err) => {
   if (err) console.log('error connecting to db');
